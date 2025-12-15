@@ -99,3 +99,19 @@ export class MySet {
 export function set(...vals: NestedArray): MySet {
     return new MySet(vals)
 }
+
+export function powerSet(xs: number[]) {
+    function powerSetHelper(ys: number[], path: number[]=[]) {
+        if (ys.length == 0) {
+            res.push(path)
+            return
+        }
+        let [head, ...rest] = ys
+        powerSetHelper(rest, [...path, head])
+        powerSetHelper(rest, path)
+    }
+    
+    let res: number[][] = []
+    powerSetHelper(xs)
+    return res
+}

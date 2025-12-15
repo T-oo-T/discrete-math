@@ -1,4 +1,4 @@
-import { set } from "../src/set.ts"
+import { set, powerSet } from "../src/set.ts"
 // @ts-ignore
 import { describe, test } from "node:test"
 // @ts-ignore
@@ -97,6 +97,29 @@ describe("set", () => {
                     [[3,4],[7,8]],
                 ]
             )
+        })
+    })
+
+    describe("powerSet", () => {
+        test("empty case", () => {
+            assert.deepEqual(powerSet([]), [[]])
+        })
+
+        test("one value", () => {
+            assert.deepEqual(powerSet([1]), [[1], []])
+        })
+
+        test("two values", () => {
+            assert.deepEqual(powerSet([1,2]), [[1,2], [1], [2], []])
+        })
+
+        test("three values", () => {
+            assert.deepEqual(powerSet([1,2,3]), [
+                [ 1, 2, 3 ], [ 1, 2 ],
+                [ 1, 3 ],    [ 1 ],
+                [ 2, 3 ],    [ 2 ],
+                [ 3 ],       []
+              ])
         })
     })
 })
