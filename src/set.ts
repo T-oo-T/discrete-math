@@ -1,19 +1,21 @@
+type NestedArray = number[] | NestedArray[]
+
 export class MySet {
     dict: {}
 
-    constructor(vals: number[]) {
+    constructor(vals: NestedArray) {
         this.dict = {}
         for (let i = 0; i < vals.length; i++) {
             this.add(vals[i])
         }
     }
 
-    vals(): (number | number[])[] {
+    vals(): NestedArray {
         return Object.keys(this.dict).map(key => JSON.parse(key))
     }
     
-    has(key: number) {
-        return this.dict[key] == true
+    has(key: number | NestedArray) {
+        return this.dict[JSON.stringify(key)] == true
     }
 
     add(key: any) {
@@ -33,7 +35,7 @@ export class MySet {
         return res
     }
 
-    union(b) {
+    union(b: MySet) {
         let res = set()
         let avals = this.vals()
         let bvals = b.vals()
@@ -49,7 +51,7 @@ export class MySet {
         return res
     }
 
-    intersection(b) {
+    intersection(b: MySet) {
         let res = set()
         let bvals = b.vals()
 
@@ -62,7 +64,7 @@ export class MySet {
         return res
     }
 
-    difference(b) {
+    difference(b: MySet) {
         let res = set()
         let avals = this.vals()
         
@@ -75,7 +77,7 @@ export class MySet {
         return res
     }
 
-    symmetricDifference(b) {
+    symmetricDifference(b: MySet) {
         return this.union(b).difference(this.intersection(b))
     }
 
@@ -90,6 +92,6 @@ export class MySet {
     }
 }
 
-export function set(...vals) {
+export function set(...vals: NestedArray): MySet {
     return new MySet(vals)
 }
