@@ -101,17 +101,17 @@ export function set(...vals: NestedArray): MySet {
 }
 
 export function powerSet(xs: number[]) {
-    function powerSetHelper(ys: number[], path: number[]=[]) {
+    function powerSetHelper(ys: number[], subset: number[]=[]) {
         if (ys.length == 0) {
-            res.push(path)
+            subsets.push(subset)
             return
         }
         let [head, ...rest] = ys
-        powerSetHelper(rest, [...path, head])
-        powerSetHelper(rest, path)
+        powerSetHelper(rest, [...subset, head])
+        powerSetHelper(rest, subset)
     }
     
-    let res: number[][] = []
+    let subsets: number[][] = []
     powerSetHelper(xs)
-    return res
+    return subsets
 }
