@@ -1,26 +1,26 @@
 export class MySet {
     dict: {}
 
-    constructor(vals) {
+    constructor(vals: number[]) {
         this.dict = {}
         for (let i = 0; i < vals.length; i++) {
             this.add(vals[i])
         }
     }
 
-    vals() {
-        return Object.keys(this.dict)
+    vals(): (number | number[])[] {
+        return Object.keys(this.dict).map(key => JSON.parse(key))
     }
     
-    has(key) {
+    has(key: number) {
         return this.dict[key] == true
     }
 
-    add(key) {
-        this.dict[key] = true
+    add(key: any) {
+        this.dict[JSON.stringify(key)] = true
     }
 
-    delete(key) {
+    delete(key: number) {
         let res = set()
         let vvals = this.vals()
 
@@ -77,6 +77,16 @@ export class MySet {
 
     symmetricDifference(b) {
         return this.union(b).difference(this.intersection(b))
+    }
+
+    cartesianProduct(b: MySet): MySet {
+        let res = set()
+        for (let aval of this.vals()) {
+            for (let bval of b.vals()) {
+                res.add([aval, bval])
+            }
+        }
+        return res
     }
 }
 

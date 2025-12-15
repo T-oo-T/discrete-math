@@ -49,4 +49,28 @@ describe("set", () => {
             set(2,3,4)
         )
     })
+
+    describe("cartesianProduct", () => {
+        test("empty case", () => {
+            let A = set()
+            let B = set()
+            assert.deepEqual(A.cartesianProduct(B).vals(), [])
+        })
+
+        test("normal case", () => {
+            let A = set(4,5,6)
+            let B = set(7,8)
+            assert.deepEqual(
+                A.cartesianProduct(B).vals(),
+                [
+                    [4,7],
+                    [4,8],
+                    [5,7],
+                    [5,8],
+                    [6,7],
+                    [6,8]
+                ]
+            )
+        })
+    })
 })
