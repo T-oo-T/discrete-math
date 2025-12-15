@@ -1,4 +1,6 @@
-class MySet {
+export class MySet {
+    dict: {}
+
     constructor(vals) {
         this.dict = {}
         for (let i = 0; i < vals.length; i++) {
@@ -78,10 +80,6 @@ class MySet {
     }
 }
 
-function set(...vals) {
+export function set(...vals) {
     return new MySet(vals)
-}
-
-module.exports = {
-    set
 }
