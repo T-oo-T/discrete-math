@@ -72,5 +72,17 @@ describe("set", () => {
                 ]
             )
         })
+
+        test("nested", () => {
+            let A = set([1,2],[3,4])
+            let B = set([7,8])
+            assert.deepEqual(
+                A.cartesianProduct(B).vals(),
+                [
+                    [[1,2],[7,8]],
+                    [[3,4],[7,8]],
+                ]
+            )
+        })
     })
 })
