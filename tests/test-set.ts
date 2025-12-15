@@ -50,6 +50,20 @@ describe("set", () => {
         )
     })
 
+    describe("size", () => {
+        test("empty set", () => {
+            assert.equal(set().size(),0)
+        })
+        
+        test("3 distinct items #1", () => {
+            assert.equal(set(1,2,3).size(),3)
+        })
+
+        test("3 distinct items #2", () => {
+            assert.equal(set(3,1,2,3,3).size(),3)
+        })
+    })
+
     describe("cartesianProduct", () => {
         test("empty case", () => {
             let A = set()

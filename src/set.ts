@@ -13,6 +13,10 @@ export class MySet {
     vals(): NestedArray {
         return Object.keys(this.dict).map(key => JSON.parse(key))
     }
+
+    size(): number {
+        return this.vals().length
+    }
     
     has(key: number | NestedArray) {
         return this.dict[JSON.stringify(key)] == true
