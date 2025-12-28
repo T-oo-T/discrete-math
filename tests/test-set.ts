@@ -143,6 +143,16 @@ describe("set", () => {
                 ]
             )
         })
+
+
+        test("with empty set", () => {
+            let A = set(1,2,3)
+            let B = set()
+            assert.deepEqual(
+                A.cartesianProduct(B).vals(),
+                []
+            )
+        })
     })
 
     describe("powerSet", () => {
