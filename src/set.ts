@@ -105,8 +105,8 @@ export function set(...vals: NestedArray): MySet {
 
 }*/
 
-export function powerSet(xs: number[]) {
-    function powerSetHelper(ys: number[], subset: number[]=[]) {
+export function powerSet(xs: any[]) {
+    function powerSetHelper(ys: any[], subset: any[]=[]) {
         if (ys.length == 0) {
             subsets.push(subset)
             return
