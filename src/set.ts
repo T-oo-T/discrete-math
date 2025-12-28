@@ -100,6 +100,11 @@ export function set(...vals: NestedArray): MySet {
     return new MySet(vals)
 }
 
+// TODO: use function with n sets as parameters instead
+/*export function cartesianProduct(...sets: MySet[]): MySet {
+
+}*/
+
 export function powerSet(xs: number[]) {
     function powerSetHelper(ys: number[], subset: number[]=[]) {
         if (ys.length == 0) {
