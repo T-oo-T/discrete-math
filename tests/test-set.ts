@@ -71,7 +71,7 @@ describe("set", () => {
             assert.deepEqual(A.cartesianProduct(B).vals(), [])
         })
 
-        test("normal case", () => {
+        test("normal case #1", () => {
             let A = set(4,5,6)
             let B = set(7,8)
             assert.deepEqual(
@@ -83,6 +83,51 @@ describe("set", () => {
                     [5,8],
                     [6,7],
                     [6,8]
+                ]
+            )
+        })
+
+        test("normal case #2", () => {
+            let A = set(1,5,7)
+            let B = set(4,6)
+            assert.deepEqual(
+                A.cartesianProduct(B).vals(),
+                [
+                    [1,4],
+                    [1,6],
+                    [5,4],
+                    [5,6],
+                    [7,4],
+                    [7,6]
+                ]
+            )
+        })
+
+        test("normal case #3", () => {
+            let A = set(4,6)
+            let B = set(1,5,7)
+            assert.deepEqual(
+                A.cartesianProduct(B).vals(),
+                [
+                    [4,1],
+                    [4,5],
+                    [4,7],
+                    [6,1],
+                    [6,5],
+                    [6,7]
+                ]
+            )
+        })
+
+        test("chained product", () => {
+            let A = set(1,2)
+            let B = set(3)
+            let C = set(7)
+            assert.deepEqual(
+                A.cartesianProduct(B).cartesianProduct(C).vals(),
+                [
+                    [[1,3], 7],
+                    [[2,3], 7]
                 ]
             )
         })
