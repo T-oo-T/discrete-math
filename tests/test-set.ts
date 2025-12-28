@@ -132,6 +132,19 @@ describe("set", () => {
             )
         })
 
+        test("exponent", () => {
+            let A = set(1,2)
+            assert.deepEqual(
+                A.cartesianProduct(A).vals(),
+                [
+                    [1,1],
+                    [1,2],
+                    [2,1],
+                    [2,2]
+                ]
+            )
+        })
+
         test("nested", () => {
             let A = set([1,2],[3,4])
             let B = set([7,8])
